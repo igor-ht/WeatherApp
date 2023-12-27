@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { setCurrentCity } from '../state/currentCity/currentCitySlice';
+import { setCurrentCity } from '../state/currentCitySlice';
 
 export default function useGeolocationApi() {
 	useEffect(() => {
