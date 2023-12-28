@@ -1,0 +1,35 @@
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.current-weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .top-section {
+    width: 90%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .base-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .add-to-favorites {
+      display: flex;
+    }
+  }
+
+  .bottom-section {
+    display: flex;
+    flex-direction: column;
+  }
+}

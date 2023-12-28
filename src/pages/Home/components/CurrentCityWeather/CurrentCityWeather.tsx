@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { currentCity } from '../../../../features/currentCity/currentCitySlice';
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 
 // const mockApiResponse = [
 // 	{
@@ -29,5 +30,9 @@ import { currentCity } from '../../../../features/currentCity/currentCitySlice';
 
 export default function CurrentCityWeather() {
 	const city = useSelector(currentCity);
-	return <div className="weather-container">{JSON.stringify(city)}</div>;
+	return (
+		<div className="current-city-container">
+			<CurrentWeather {...city} />
+		</div>
+	);
 }
