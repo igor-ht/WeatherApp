@@ -1,12 +1,13 @@
 import './Header.scss';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
 	return (
 		<header>
 			<div className="header-icon">WEATHER</div>
 			<nav>
-				<a href="/">Home</a>
-				<a href="/favorites">Favorites</a>
+				<Link to="/">Home</Link>
+				<Link to="/favorites">Favorites</Link>
 			</nav>
 		</header>
 	);

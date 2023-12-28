@@ -1,12 +1,20 @@
 import './CurrentWeather.scss';
 import { CurrentCityType } from '../../../../../../features/currentCity/currentCitySlice';
+import { addFavorite } from '../../../../../../features/favorites/favoritesSlice';
+import { useDispatch } from 'react-redux';
 
 export default function CurrentWeather(props: CurrentCityType) {
+	const dispatch = useDispatch();
+
+	const addCityToFavorites = () => {
+		dispatch(addFavorite(props));
+	};
+	
 	return (
 		<div className="current-weather-container">
 			<div className="top-section">
 				<div className="add-to-favorites">
-					<button>Favorites</button>
+					<button onClick={addCityToFavorites}>Favorites</button>
 				</div>
 				<div className="base-info">
 					<h1>{props.city.name}</h1>

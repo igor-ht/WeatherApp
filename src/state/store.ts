@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import currentCityReducer from '../features/currentCity/currentCitySlice';
 import { accuweatherApi } from '../api/accuweatherApi';
+import currentCityReducer from '../features/currentCity/currentCitySlice';
 import favoritesReducer from '../features/favorites/favoritesSlice';
 
 export const store = configureStore({

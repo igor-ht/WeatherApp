@@ -24,7 +24,7 @@ const initialState: FavoritesI = {
 		},
 		{
 			city: {
-				key: 215854,
+				key: 215834,
 				name: 'Tel Aviv',
 			},
 			forecast: {
@@ -50,7 +50,7 @@ const favoritesSlice = createSlice({
 			state.favorites.push(action.payload);
 		},
 		removeFavorite: (state, action) => {
-			state = { favorites: state.favorites.filter((favorite) => favorite.city.key === action.payload.city.key) };
+			return { favorites: state.favorites.filter((favorite) => favorite.city.key !== action.payload.city.key) };
 		},
 	},
 });
