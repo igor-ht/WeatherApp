@@ -1,14 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import currentCityReducer from './currentCitySlice';
-import currentWeatherReducer from './currentWeatherSlice';
-import { accuweatherApi } from '../services/accuweather';
+import currentCityReducer from '../features/currentCity/currentCitySlice';
+import { accuweatherApi } from '../api/accuweatherApi';
+import favoritesReducer from '../features/favorites/favoritesSlice';
 
 export const store = configureStore({
 	reducer: {
 		currentCity: currentCityReducer,
-		currentWeather: currentWeatherReducer,
+		favorites: favoritesReducer,
 		[accuweatherApi.reducerPath]: accuweatherApi.reducer,
 	},
+	// middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(accuweatherApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
