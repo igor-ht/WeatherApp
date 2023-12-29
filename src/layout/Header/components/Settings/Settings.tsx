@@ -1,6 +1,7 @@
 import './Settings.scss';
 import { useState } from 'react';
 import ThemeToggleButton from './ThemeToggleButton/ThemeToggleButton';
+import TemperatureUnitToggleButton from './TemperatureUnitToggleButton/TemperatureUnitToggleButton';
 
 export default function Settings() {
 	const [openSettings, setOpenSettings] = useState(false);
@@ -17,6 +18,7 @@ export default function Settings() {
 			</button>
 			<dialog open={openSettings}>
 				<ThemeToggleButton />
+				<TemperatureUnitToggleButton />
 			</dialog>
 		</div>
 	);

@@ -1,11 +1,17 @@
 import './ThemeToggleButton.scss';
+import { ChangeEvent } from 'react';
 
 export default function ThemeToggleButton() {
+	const handleToggleBtn = (event: ChangeEvent<HTMLInputElement>) => {
+		console.log(event.target.checked);
+	};
+
 	return (
 		<div className="theme-toggle-btn">
 			<input
 				type="checkbox"
 				id="darkmode-toggle"
+				onChange={handleToggleBtn}
 			/>
 			<label htmlFor="darkmode-toggle">
 				<svg
