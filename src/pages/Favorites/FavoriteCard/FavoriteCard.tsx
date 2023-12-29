@@ -10,7 +10,7 @@ export default function FavoriteCard(props: CurrentCityType) {
 
 	const handleUpdateCurrentCity = () => {
 		dispatch(setCurrentCity(props.city));
-		dispatch(setCurrentWeather(props.forecast));
+		dispatch(setCurrentWeather(props.currentWeather));
 		navigate('/');
 	};
 
@@ -27,8 +27,8 @@ export default function FavoriteCard(props: CurrentCityType) {
 			</button>
 			<div onClick={handleUpdateCurrentCity}>
 				<h1>{props.city.name}</h1>
-				<h1>{props.forecast.Temperature.Metric.Value}</h1>
-				<h1>{props.forecast.WeatherText}</h1>
+				<h1>{props.currentWeather.Temperature.Metric.Value}</h1>
+				<h1>{props.currentWeather.WeatherText}</h1>
 			</div>
 		</div>
 	);

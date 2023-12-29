@@ -1,9 +1,13 @@
 import './TemperatureUnitToggleButton.scss';
-import { ChangeEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { temperatureUnit, setTemperatureUnit } from '../../../../../features/temperatureUnit/temperatureUnit';
 
 export default function TemperatureUnitToggleButton() {
-	const handleToggleBtn = (event: ChangeEvent<HTMLInputElement>) => {
-		console.log(event.target.checked);
+	const unit = useSelector(temperatureUnit);
+	const dispatch = useDispatch();
+
+	const handleToggleBtn = () => {
+		dispatch(setTemperatureUnit());
 	};
 	return (
 		<div className="temp-unit-toggle-btn">
@@ -11,6 +15,7 @@ export default function TemperatureUnitToggleButton() {
 				type="checkbox"
 				id="temp-unit-toggle"
 				onChange={handleToggleBtn}
+				checked={unit.unit === 'F'}
 			/>
 			<label htmlFor="temp-unit-toggle">
 				<div className="celsius">°C</div>

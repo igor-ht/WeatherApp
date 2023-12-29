@@ -13,7 +13,7 @@ const initialState: FavoritesI = {
 				key: 215854,
 				name: 'Netanya',
 			},
-			forecast: {
+			currentWeather: {
 				WeatherText: 'Partly Cloud',
 				HasPrecipitation: false,
 				Temperature: {
@@ -21,13 +21,14 @@ const initialState: FavoritesI = {
 					Imperial: { Value: 67, Unit: 'F', UnitType: 18 },
 				},
 			},
+			fiveDaysForecast: [],
 		},
 		{
 			city: {
 				key: 215834,
 				name: 'Tel Aviv',
 			},
-			forecast: {
+			currentWeather: {
 				WeatherText: 'Partly Cloud',
 				HasPrecipitation: false,
 				Temperature: {
@@ -35,6 +36,7 @@ const initialState: FavoritesI = {
 					Imperial: { Value: 67, Unit: 'F', UnitType: 18 },
 				},
 			},
+			fiveDaysForecast: [],
 		},
 	],
 };

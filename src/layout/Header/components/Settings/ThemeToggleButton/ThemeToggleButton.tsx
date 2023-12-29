@@ -1,9 +1,13 @@
 import './ThemeToggleButton.scss';
-import { ChangeEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTheme, theme } from '../../../../../features/theme/themeSlice';
 
 export default function ThemeToggleButton() {
-	const handleToggleBtn = (event: ChangeEvent<HTMLInputElement>) => {
-		console.log(event.target.checked);
+	const currentTheme = useSelector(theme);
+	const dispatch = useDispatch();
+
+	const handleToggleBtn = () => {
+		dispatch(setTheme());
 	};
 
 	return (
@@ -12,6 +16,7 @@ export default function ThemeToggleButton() {
 				type="checkbox"
 				id="darkmode-toggle"
 				onChange={handleToggleBtn}
+				checked={currentTheme.theme === 'dark'}
 			/>
 			<label htmlFor="darkmode-toggle">
 				<svg
