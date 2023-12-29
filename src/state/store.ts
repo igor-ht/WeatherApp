@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { accuweatherApi } from '../api/accuweatherApi';
+import { accuweatherApi } from '../features/api/accuweatherApi';
 import currentCityReducer from '../features/currentCity/currentCitySlice';
 import favoritesReducer from '../features/favorites/favoritesSlice';
 
