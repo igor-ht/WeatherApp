@@ -9,7 +9,7 @@ export const store = configureStore({
 		favorites: favoritesReducer,
 		[accuweatherApi.reducerPath]: accuweatherApi.reducer,
 	},
-	// middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(accuweatherApi.middleware),
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(accuweatherApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
