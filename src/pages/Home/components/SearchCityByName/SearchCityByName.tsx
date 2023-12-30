@@ -1,3 +1,4 @@
+import Autocomplete from './Autocomplete/Autocomplete';
 import './SearchCityByName.scss';
 import { ChangeEvent } from 'react';
 
@@ -11,8 +12,9 @@ export default function SearchCityByName() {
 			<input
 				type="text"
 				onChange={handleOnChangeAutocomplete}
-				placeholder='Search any city by name'
+				placeholder="Search any city by name"
 			/>
+			<Autocomplete />
 		</div>
 	);
 }
