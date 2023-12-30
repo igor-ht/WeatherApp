@@ -1,9 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { searchCity } from '../../../../../features/searchCity/searchCity';
+import './Autocomplete.scss';
+import { useDispatch } from 'react-redux';
 import { setCurrentCity } from '../../../../../features/currentCity/currentCitySlice';
+import { useGetCitySearchAutocompleteQuery } from '../../../../../features/api/accuweatherApi';
 
-export default function Autocomplete() {
-	const cities = useSelector(searchCity);
+export default function Autocomplete({ city }: { city: string }) {
+	const { data, isSuccess } = useGetCitySearchAutocompleteQuery(city);
 	const dispatch = useDispatch();
 
 	const handleNewCurrentCity = (key: string, name: string) => {
@@ -12,9 +13,9 @@ export default function Autocomplete() {
 
 	return (
 		<dialog
-			open
+			open={isSuccess}
 			className="autocomplete-container">
-			{cities.cities.map((city, i) => {
+			{data?.map((city: any, i: number) => {
 				return (
 					<div
 						key={i}

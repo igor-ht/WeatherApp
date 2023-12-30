@@ -1,12 +1,14 @@
-import Autocomplete from './Autocomplete/Autocomplete';
 import './SearchCityByName.scss';
-import { ChangeEvent } from 'react';
+import Autocomplete from './Autocomplete/Autocomplete';
+import { ChangeEvent, useState } from 'react';
 
 export default function SearchCityByName() {
-	const handleOnChangeAutocomplete = (event: ChangeEvent<HTMLInputElement>) => {
-		console.log(event.currentTarget.value);
-		// handle the autocomplete update for every change **not make a get request for every change necessarily
+	const [city, setCity] = useState('');
+
+	const handleOnChangeAutocomplete = async (event: ChangeEvent<HTMLInputElement>) => {
+		setCity(event.currentTarget.value);
 	};
+
 	return (
 		<div className="search-container">
 			<input
@@ -14,7 +16,7 @@ export default function SearchCityByName() {
 				onChange={handleOnChangeAutocomplete}
 				placeholder="Search any city by name"
 			/>
-			<Autocomplete />
+			{city ? <Autocomplete city={city} /> : null}
 		</div>
 	);
 }
