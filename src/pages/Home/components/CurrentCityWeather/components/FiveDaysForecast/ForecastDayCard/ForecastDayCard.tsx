@@ -8,7 +8,6 @@ export default function ForecastDayCard(forecast: DailyForecastI) {
 	const unit = useSelector(temperatureUnit);
 
 	const dateObject = new Date(forecast.Date);
-	// const monthDay = dateObject.getDate();
 	const weekDay = dateObject.toLocaleString('en-US', { weekday: 'long' });
 
 	return (
@@ -16,12 +15,13 @@ export default function ForecastDayCard(forecast: DailyForecastI) {
 			<h1>{city.city.name}</h1>
 			<h1>
 				Min
-				{unit.unit === 'F' ? (forecast.Temperature.Minimum.Value * 1.8 + 32).toFixed() : forecast.Temperature.Minimum.Value.toFixed()}°
-				{unit.unit}
+				{unit.unit === 'F' ? (forecast?.Temperature?.Minimum?.Value * 1.8 + 32).toFixed() : forecast.Temperature?.Minimum?.Value?.toFixed()}
+				°{unit.unit}
 			</h1>
 			<h1>
-				Max {unit.unit === 'F' ? (forecast.Temperature.Minimum.Value * 1.8 + 32).toFixed() : forecast.Temperature.Maximum.Value.toFixed()}°
-				{unit.unit}
+				Max{' '}
+				{unit.unit === 'F' ? (forecast?.Temperature?.Maximum?.Value * 1.8 + 32).toFixed() : forecast.Temperature?.Maximum?.Value?.toFixed()}
+				°{unit.unit}
 			</h1>
 			<h1>{weekDay}</h1>
 		</div>

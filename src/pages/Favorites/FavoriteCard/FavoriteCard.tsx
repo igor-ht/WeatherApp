@@ -31,11 +31,11 @@ export default function FavoriteCard(props: CurrentCityType) {
 				<h1>{props.city.name}</h1>
 				<h1>
 					{unit.unit === 'F'
-						? (props.currentWeather.Temperature.Metric.Value * 1.8 + 32).toFixed()
-						: props.currentWeather.Temperature.Metric.Value.toFixed()}
+						? (props.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
+						: props.currentWeather?.Temperature?.Metric?.Value?.toFixed()}
 					°{unit.unit}
 				</h1>
-				<h1>{props.currentWeather.WeatherText}</h1>
+				<h1>{props.currentWeather?.WeatherText}</h1>
 			</div>
 		</div>
 	);

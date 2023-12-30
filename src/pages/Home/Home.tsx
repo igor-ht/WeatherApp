@@ -1,4 +1,4 @@
-import './Home.scss'
+import './Home.scss';
 import CurrentCityWeather from './components/CurrentCityWeather/CurrentCityWeather';
 import SearchCityByName from './components/SearchCityByName/SearchCityByName';
 

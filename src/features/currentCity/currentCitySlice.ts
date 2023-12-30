@@ -8,17 +8,10 @@ interface CityI {
 
 interface CurrentWeatherI {
 	WeatherText: string;
-	HasPrecipitation: boolean;
 	Temperature: {
 		Metric: {
 			Value: number;
 			Unit: 'C';
-			UnitType: number;
-		};
-		Imperial: {
-			Value: number;
-			Unit: 'F';
-			UnitType: number;
 		};
 	};
 }
@@ -29,12 +22,10 @@ export interface DailyForecastI {
 		Minimum: {
 			Value: number;
 			Unit: 'C';
-			UnitType: number;
 		};
 		Maximum: {
 			Value: number;
 			Unit: 'C';
-			UnitType: number;
 		};
 	};
 }
@@ -52,10 +43,8 @@ const initialState: CurrentCityType = {
 	},
 	currentWeather: {
 		WeatherText: 'Partly Cloud',
-		HasPrecipitation: false,
 		Temperature: {
-			Metric: { Value: 19.4, Unit: 'C', UnitType: 17 },
-			Imperial: { Value: 67, Unit: 'F', UnitType: 18 },
+			Metric: { Value: 19.4, Unit: 'C' },
 		},
 	},
 	fiveDaysForecast: [
@@ -65,12 +54,10 @@ const initialState: CurrentCityType = {
 				Minimum: {
 					Value: 12.7,
 					Unit: 'C',
-					UnitType: 17,
 				},
 				Maximum: {
 					Value: 22,
 					Unit: 'C',
-					UnitType: 17,
 				},
 			},
 		},
@@ -80,12 +67,10 @@ const initialState: CurrentCityType = {
 				Minimum: {
 					Value: 11.8,
 					Unit: 'C',
-					UnitType: 17,
 				},
 				Maximum: {
 					Value: 21.9,
 					Unit: 'C',
-					UnitType: 17,
 				},
 			},
 		},
@@ -95,12 +80,10 @@ const initialState: CurrentCityType = {
 				Minimum: {
 					Value: 12.5,
 					Unit: 'C',
-					UnitType: 17,
 				},
 				Maximum: {
 					Value: 21.1,
 					Unit: 'C',
-					UnitType: 17,
 				},
 			},
 		},
@@ -110,12 +93,10 @@ const initialState: CurrentCityType = {
 				Minimum: {
 					Value: 13.5,
 					Unit: 'C',
-					UnitType: 17,
 				},
 				Maximum: {
 					Value: 20.5,
 					Unit: 'C',
-					UnitType: 17,
 				},
 			},
 		},
@@ -125,12 +106,10 @@ const initialState: CurrentCityType = {
 				Minimum: {
 					Value: 12.4,
 					Unit: 'C',
-					UnitType: 17,
 				},
 				Maximum: {
 					Value: 20.5,
 					Unit: 'C',
-					UnitType: 17,
 				},
 			},
 		},
@@ -148,7 +127,7 @@ const currentCitySlice = createSlice({
 			state.currentWeather = action.payload;
 		},
 		setFiveDaysForecast: (state, action) => {
-			state.fiveDaysForecast.concat(action.payload);
+			state.fiveDaysForecast = action.payload;
 		},
 	},
 });
