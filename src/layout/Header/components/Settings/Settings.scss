@@ -1,3 +1,22 @@
+@keyframes OpenModal {
+  from {
+    left: 100%;
+  }
+  to {
+    left: calc(100% - 6.2rem);
+  }
+}
+@keyframes CloseModal {
+  from {
+    display: block;
+    left: calc(100% - 6.2rem);
+  }
+  to {
+    display: none;
+    left: 100%;
+  }
+}
+
 .settings {
   button {
     background-color: transparent;
@@ -10,12 +29,19 @@
     }
   }
 
-  dialog[open] {
+  dialog {
+    background-color: rgb(206, 192, 156);
     width: 6rem;
-    left: calc(100% - 7em);
+    top: 5.05rem;
+    left: calc(100% - 6.2rem);
     padding: 0;
     margin: 0;
-    border: 1px solid gray;
+    border: 1px solid #a5a55d;
     border-radius: 5px;
+    animation: CloseModal 0.5s normal;
+  }
+
+  dialog[open] {
+    animation: OpenModal 0.5s normal;
   }
 }

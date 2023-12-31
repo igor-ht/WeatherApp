@@ -12,16 +12,26 @@ export default function ForecastDayCard(forecast: DailyForecastI) {
 	return (
 		<div className="forecast-card">
 			<h1>{weekDay}</h1>
-			<h1>
-				Min
-				{unit.unit === 'F' ? (forecast?.Temperature?.Minimum?.Value * 1.8 + 32).toFixed() : forecast.Temperature?.Minimum?.Value?.toFixed()}
-				°{unit.unit}
-			</h1>
-			<h1>
-				Max{' '}
-				{unit.unit === 'F' ? (forecast?.Temperature?.Maximum?.Value * 1.8 + 32).toFixed() : forecast.Temperature?.Maximum?.Value?.toFixed()}
-				°{unit.unit}
-			</h1>
+			<div className="temperature">
+				<section>
+					<span>Min&nbsp;</span>
+					<span>
+						{unit.unit === 'F'
+							? (forecast?.Temperature?.Minimum?.Value * 1.8 + 32).toFixed()
+							: forecast.Temperature?.Minimum?.Value?.toFixed()}
+						&deg;{unit.unit}
+					</span>
+				</section>
+				<section>
+					<span>Max&nbsp;</span>
+					<span>
+						{unit.unit === 'F'
+							? (forecast?.Temperature?.Maximum?.Value * 1.8 + 32).toFixed()
+							: forecast.Temperature?.Maximum?.Value?.toFixed()}
+						&deg;{unit.unit}
+					</span>
+				</section>
+			</div>
 		</div>
 	);
 }
