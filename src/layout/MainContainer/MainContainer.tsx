@@ -1,3 +1,4 @@
+import './MainContainer.scss';
 import { Outlet } from 'react-router-dom';
 // import { useGetCityByCoordinatesQuery } from '../../features/api/accuweatherApi';
 // import { useDispatch } from 'react-redux';
@@ -18,7 +19,7 @@ export default function MainContainer() {
 	// if (data) dispatch(setCurrentCity({ key: data?.Key, name: data?.LocalizedName }));
 
 	return (
-		<main style={{ flex: '1' }}>
+		<main className="main-container">
 			<Outlet />
 		</main>
 	);
