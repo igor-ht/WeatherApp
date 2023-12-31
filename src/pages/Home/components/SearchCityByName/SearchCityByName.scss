@@ -7,9 +7,12 @@
   input {
     margin: 1rem 0;
     height: 2.5rem;
-    width: 25rem;
+    width: 20rem;
     text-indent: 3px;
     border-radius: 25px;
     border: 1px solid white;
+    @media (min-width: 400px) {
+      width: 25rem;
+    }
   }
 }

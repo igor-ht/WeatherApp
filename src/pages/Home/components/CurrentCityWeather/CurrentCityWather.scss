@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   user-select: none;
+
+  @media (min-width: 400px) {
+    gap: 2rem;
+  }
 }

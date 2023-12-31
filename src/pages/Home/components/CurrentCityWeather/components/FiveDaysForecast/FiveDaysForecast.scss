@@ -4,5 +4,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: 400px) {
+    gap: 3rem;
+  }
 }

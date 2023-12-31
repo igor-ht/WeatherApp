@@ -23,9 +23,16 @@
     border: 0;
 
     img {
-      width: 2rem;
-      height: 2rem;
+      width: 1.5rem;
+      height: 1.5rem;
       cursor: pointer;
+    }
+    @media (min-width: 400px) {
+      padding: 0.5rem;
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 
@@ -43,6 +50,9 @@
     &[data-theme="dark"] {
       background-color: gray;
       border: 1px solid gray;
+    }
+    @media (max-width: 400px) {
+      top: 3rem;
     }
   }
 
