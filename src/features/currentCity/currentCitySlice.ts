@@ -39,81 +39,15 @@ export type CurrentCityType = {
 const initialState: CurrentCityType = {
 	city: {
 		key: 215854,
-		name: 'Netanya',
+		name: 'Tel Aviv',
 	},
 	currentWeather: {
-		WeatherText: 'Partly Cloud',
+		WeatherText: '',
 		Temperature: {
-			Metric: { Value: 19.4, Unit: 'C' },
+			Metric: { Value: 0, Unit: 'C' },
 		},
 	},
-	fiveDaysForecast: [
-		{
-			Date: '2023-12-29T07:00:00+02:00',
-			Temperature: {
-				Minimum: {
-					Value: 12.7,
-					Unit: 'C',
-				},
-				Maximum: {
-					Value: 22,
-					Unit: 'C',
-				},
-			},
-		},
-		{
-			Date: '2023-12-30T07:00:00+02:00',
-			Temperature: {
-				Minimum: {
-					Value: 11.8,
-					Unit: 'C',
-				},
-				Maximum: {
-					Value: 21.9,
-					Unit: 'C',
-				},
-			},
-		},
-		{
-			Date: '2023-12-31T07:00:00+02:00',
-			Temperature: {
-				Minimum: {
-					Value: 12.5,
-					Unit: 'C',
-				},
-				Maximum: {
-					Value: 21.1,
-					Unit: 'C',
-				},
-			},
-		},
-		{
-			Date: '2024-01-01T07:00:00+02:00',
-			Temperature: {
-				Minimum: {
-					Value: 13.5,
-					Unit: 'C',
-				},
-				Maximum: {
-					Value: 20.5,
-					Unit: 'C',
-				},
-			},
-		},
-		{
-			Date: '2024-01-02T07:00:00+02:00',
-			Temperature: {
-				Minimum: {
-					Value: 12.4,
-					Unit: 'C',
-				},
-				Maximum: {
-					Value: 20.5,
-					Unit: 'C',
-				},
-			},
-		},
-	],
+	fiveDaysForecast: [],
 };
 
 const currentCitySlice = createSlice({

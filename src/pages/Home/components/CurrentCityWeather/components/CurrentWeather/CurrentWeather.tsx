@@ -12,10 +12,9 @@ export default function CurrentWeather() {
 	const favorites = useSelector(allFavorites);
 	const currentTheme = useSelector(theme);
 	const dispatch = useDispatch();
+	const unit = useSelector(temperatureUnit);
 	const [isFavorite, setIsFavorite] = useState(false);
 	const { data } = useGetCurrentWeatherQuery(city.city.key);
-	if (data) dispatch(setCurrentWeather(data));
-	const unit = useSelector(temperatureUnit);
 
 	const handleFavoriteStatus = () => {
 		if (!isFavorite) dispatch(addFavorite(city));
@@ -24,8 +23,13 @@ export default function CurrentWeather() {
 	};
 
 	useEffect(() => {
+		if (data) dispatch(setCurrentWeather(data[0]));
+	}, [data]);
+
+	useEffect(() => {
 		for (const favorite of favorites.favorites) {
 			if (favorite.city.key === city.city.key) setIsFavorite(true);
+			console.log(favorite.city, city.city);
 		}
 	}, [favorites, city]);
 
