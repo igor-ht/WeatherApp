@@ -15,10 +15,8 @@ const initialState: FavoritesI = {
 			},
 			currentWeather: {
 				WeatherText: 'Partly Cloud',
-				HasPrecipitation: false,
 				Temperature: {
-					Metric: { Value: 19.4, Unit: 'C', UnitType: 17 },
-					Imperial: { Value: 67, Unit: 'F', UnitType: 18 },
+					Metric: { Value: 19.4, Unit: 'C' },
 				},
 			},
 			fiveDaysForecast: [],
@@ -30,10 +28,8 @@ const initialState: FavoritesI = {
 			},
 			currentWeather: {
 				WeatherText: 'Partly Cloud',
-				HasPrecipitation: false,
 				Temperature: {
-					Metric: { Value: 19.4, Unit: 'C', UnitType: 17 },
-					Imperial: { Value: 67, Unit: 'F', UnitType: 18 },
+					Metric: { Value: 19.4, Unit: 'C' },
 				},
 			},
 			fiveDaysForecast: [],

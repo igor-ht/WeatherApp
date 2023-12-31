@@ -25,6 +25,19 @@ h3 {
 
     .add-to-favorites {
       display: flex;
+
+      button {
+        width: 3rem;
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+
+        img {
+          width: 3rem;
+          height: 2rem;
+          cursor: pointer;
+        }
+      }
     }
   }
 
