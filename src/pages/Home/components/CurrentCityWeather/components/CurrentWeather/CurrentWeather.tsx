@@ -3,7 +3,7 @@ import { currentCity, setCurrentWeather } from '../../../../../../features/curre
 import { addFavorite, removeFavorite, allFavorites } from '../../../../../../features/favorites/favoritesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { temperatureUnit } from '../../../../../../features/temperatureUnit/temperatureUnit';
-// import { useGetCurrentWeatherQuery } from '../../../../../../features/api/accuweatherApi';
+import { useGetCurrentWeatherQuery } from '../../../../../../features/api/accuweatherApi';
 import { useState, useEffect } from 'react';
 import { theme } from '../../../../../../features/theme/themeSlice';
 
@@ -13,8 +13,8 @@ export default function CurrentWeather() {
 	const currentTheme = useSelector(theme);
 	const dispatch = useDispatch();
 	const [isFavorite, setIsFavorite] = useState(false);
-	// const { data } = useGetCurrentWeatherQuery(city.city.key);
-	// if (data) dispatch(setCurrentWeather(data));
+	const { data } = useGetCurrentWeatherQuery(city.city.key);
+	if (data) dispatch(setCurrentWeather(data));
 	const unit = useSelector(temperatureUnit);
 
 	const handleFavoriteStatus = () => {

@@ -5,6 +5,7 @@ import { useGetCitySearchAutocompleteQuery } from '../../../../../features/api/a
 
 export default function Autocomplete({ city }: { city: string }) {
 	const { data, isSuccess } = useGetCitySearchAutocompleteQuery(city);
+
 	const dispatch = useDispatch();
 
 	const handleNewCurrentCity = (key: string, name: string) => {
@@ -15,7 +16,7 @@ export default function Autocomplete({ city }: { city: string }) {
 		<dialog
 			open={isSuccess}
 			className="autocomplete-container">
-			{data?.map((city: any, i: number) => {
+			{data?.map((city: { Key: string; LocalizedName: string }, i: number) => {
 				return (
 					<div
 						key={i}

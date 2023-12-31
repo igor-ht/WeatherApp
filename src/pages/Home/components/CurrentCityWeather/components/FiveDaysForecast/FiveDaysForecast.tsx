@@ -7,8 +7,8 @@ import { useGetFiveDaysForecastQuery } from '../../../../../../features/api/accu
 export default function FiveDaysForecast() {
 	const city = useSelector(currentCity);
 	const dispatch = useDispatch();
-	// const { data } = useGetFiveDaysForecastQuery(city.city.key);
-	// if (data) dispatch(setFiveDaysForecast(data.DailyForecasts));
+	const { data } = useGetFiveDaysForecastQuery(city.city.key);
+	if (data) dispatch(setFiveDaysForecast(data.DailyForecasts));
 
 	return (
 		<div className="five-days-forecast-container">
