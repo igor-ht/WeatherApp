@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const API_KEY = 'ioHZAANhaaQYHq49IZ20uVZmc6IjPB1j';
+const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 export const accuweatherApi = createApi({
 	reducerPath: 'accuweatherApi',
