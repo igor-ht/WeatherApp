@@ -5,7 +5,7 @@ const API_KEY = import.meta.env.VITE_APP_API_KEY;
 export const accuweatherApi = createApi({
 	reducerPath: 'accuweatherApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://dataservice.accuweather.com/',
+		baseUrl: 'https://dataservice.accuweather.com/',
 		method: 'get',
 		mode: 'cors',
 		credentials: 'same-origin',
