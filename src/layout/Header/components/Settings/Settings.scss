@@ -39,6 +39,11 @@
     border: 1px solid #a5a55d;
     border-radius: 5px;
     animation: CloseModal 0.5s normal;
+
+    &[data-theme="dark"] {
+      background-color: gray;
+      border: 1px solid gray;
+    }
   }
 
   dialog[open] {

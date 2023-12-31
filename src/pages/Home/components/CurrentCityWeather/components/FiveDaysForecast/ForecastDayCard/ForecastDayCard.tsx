@@ -2,15 +2,19 @@ import './ForecastDayCard.scss';
 import { useSelector } from 'react-redux';
 import { DailyForecastI } from '../../../../../../../features/currentCity/currentCitySlice';
 import { temperatureUnit } from '../../../../../../../features/temperatureUnit/temperatureUnit';
+import { theme } from '../../../../../../../features/theme/themeSlice';
 
 export default function ForecastDayCard(forecast: DailyForecastI) {
 	const unit = useSelector(temperatureUnit);
+	const currentTheme = useSelector(theme);
 
 	const dateObject = new Date(forecast.Date);
 	const weekDay = dateObject.toLocaleString('en-US', { weekday: 'long' });
 
 	return (
-		<div className="forecast-card">
+		<div
+			className="forecast-card"
+			data-theme={currentTheme.theme}>
 			<h1>{weekDay}</h1>
 			<div className="temperature">
 				<section>

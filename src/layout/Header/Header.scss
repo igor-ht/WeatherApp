@@ -1,4 +1,5 @@
 header {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,6 +17,19 @@ header {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+  user-select: none;
+
+  &[data-theme="dark"] {
+    background-color: #240618;
+    a {
+      color: white;
+    }
+    .settings {
+      img {
+        filter: invert(1);
+      }
+    }
+  }
 }
 
 .header-icon {
@@ -35,3 +49,4 @@ nav {
     color: black;
   }
 }
+

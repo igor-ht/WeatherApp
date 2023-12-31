@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, allFavorites, removeFavorite } from '../../../features/favorites/favoritesSlice';
 import { temperatureUnit } from '../../../features/temperatureUnit/temperatureUnit';
 import { useState, useEffect } from 'react';
+import { theme } from '../../../features/theme/themeSlice';
 
 export default function FavoriteCard(props: CurrentCityType) {
 	const favorites = useSelector(allFavorites);
-	const dispatch = useDispatch();
 	const unit = useSelector(temperatureUnit);
+	const currentTheme = useSelector(theme);
+	const dispatch = useDispatch();
 	const [isFavorite, setIsFavorite] = useState(false);
 	const navigate = useNavigate();
 
@@ -32,7 +34,9 @@ export default function FavoriteCard(props: CurrentCityType) {
 	};
 
 	return (
-		<div className="favorite-card">
+		<div
+			className="favorite-card"
+			data-theme={currentTheme.theme}>
 			<button
 				type="button"
 				onClick={handleFavoriteStatus}>
@@ -47,13 +51,13 @@ export default function FavoriteCard(props: CurrentCityType) {
 				onClick={handleUpdateCurrentCity}>
 				<h1>{props.city.name}</h1>
 				<section>
-					<h1>{props.currentWeather?.WeatherText}</h1>
 					<h1>
 						{unit.unit === 'F'
 							? (props.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
 							: props.currentWeather?.Temperature?.Metric?.Value?.toFixed()}
 						&deg;{unit.unit}
 					</h1>
+					<h1>{props.currentWeather?.WeatherText}</h1>
 				</section>
 			</div>
 		</div>

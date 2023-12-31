@@ -50,6 +50,10 @@ h3 {
         width: 3rem;
         height: 2rem;
         cursor: pointer;
+
+        &[data-theme="dark"] {
+          filter: invert(1);
+        }
       }
     }
   }

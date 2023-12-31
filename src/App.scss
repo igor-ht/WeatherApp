@@ -7,7 +7,6 @@ html {
 
 body,
 #root {
-  height: 100%;
   margin: 0;
 }
 
@@ -15,4 +14,17 @@ body,
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  &[data-theme="dark"] {
+    background: rgb(2, 11, 56);
+    background: linear-gradient(0deg, rgba(2, 11, 56, 1) 0%, rgba(48, 4, 13, 1) 100%);
+    color: white !important;
+  }
+}
+
+@media (min-width: 400px) {
+  body,
+  #root {
+    height: 100%;
+  }
 }

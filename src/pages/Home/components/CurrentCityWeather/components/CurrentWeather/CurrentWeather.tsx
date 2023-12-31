@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { temperatureUnit } from '../../../../../../features/temperatureUnit/temperatureUnit';
 // import { useGetCurrentWeatherQuery } from '../../../../../../features/api/accuweatherApi';
 import { useState, useEffect } from 'react';
+import { theme } from '../../../../../../features/theme/themeSlice';
 
 export default function CurrentWeather() {
 	const city = useSelector(currentCity);
 	const favorites = useSelector(allFavorites);
+	const currentTheme = useSelector(theme);
 	const dispatch = useDispatch();
 	const [isFavorite, setIsFavorite] = useState(false);
 	// const { data } = useGetCurrentWeatherQuery(city.city.key);
@@ -38,6 +40,7 @@ export default function CurrentWeather() {
 						src={isFavorite ? './heart-filled.svg' : './heart-empty.svg'}
 						alt="favorite"
 						title="favorite"
+						data-theme={isFavorite ? 'light' : currentTheme.theme}
 					/>
 				</button>
 			</div>
