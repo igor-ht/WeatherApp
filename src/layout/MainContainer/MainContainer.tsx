@@ -18,7 +18,7 @@ export default function MainContainer() {
 	// if (data) dispatch(setCurrentCity({ key: data?.Key, name: data?.LocalizedName }));
 
 	return (
-		<main>
+		<main style={{ flex: '1' }}>
 			<Outlet />
 		</main>
 	);

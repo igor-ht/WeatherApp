@@ -29,29 +29,31 @@ export default function CurrentWeather() {
 
 	return (
 		<div className="current-weather-container">
-			<div className="top-section">
-				<div className="add-to-favorites">
-					<button onClick={handleFavoriteStatus}>
-						<img
-							src={isFavorite ? './heart-filled.svg' : './heart-empty.svg'}
-							alt="favorite"
-							title="favorite"
-						/>
-					</button>
-				</div>
-				<div className="base-info">
-					<h1>{city.city?.name}</h1>
-					<h1>
-						{unit.unit === 'F'
-							? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
-							: city.currentWeather?.Temperature?.Metric?.Value.toFixed()}
-						°{unit.unit}
-					</h1>
-				</div>
+			<div className="base-info">
+				<h1>{city.city?.name}</h1>
 			</div>
-			<div className="bottom-section">
+			<div className="add-to-favorites">
+				<button onClick={handleFavoriteStatus}>
+					<img
+						src={isFavorite ? './heart-filled.svg' : './heart-empty.svg'}
+						alt="favorite"
+						title="favorite"
+					/>
+				</button>
+			</div>
+			<div className="temperature">
+				<h2>
+					{unit.unit === 'F'
+						? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
+						: city.currentWeather?.Temperature?.Metric?.Value.toFixed()}
+					°{unit.unit}
+				</h2>
+			</div>
+			<div className="weatherText">
 				<h1>{city.currentWeather?.WeatherText}</h1>
 			</div>
+			<div className="top-section"></div>
+			<div className="bottom-section"></div>
 		</div>
 	);
 }

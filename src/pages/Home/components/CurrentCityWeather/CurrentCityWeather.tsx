@@ -1,3 +1,4 @@
+import './CurrentCityWather.scss';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import FiveDaysForecast from './components/FiveDaysForecast/FiveDaysForecast';
 
