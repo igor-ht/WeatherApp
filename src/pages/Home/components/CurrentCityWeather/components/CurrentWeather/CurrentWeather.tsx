@@ -25,7 +25,7 @@ export default function CurrentWeather() {
 
 	useEffect(() => {
 		if (data) dispatch(setCurrentWeather(data[0]));
-	}, [data]);
+	}, [data, dispatch]);
 
 	useEffect(() => {
 		for (const favorite of favorites.favorites) {

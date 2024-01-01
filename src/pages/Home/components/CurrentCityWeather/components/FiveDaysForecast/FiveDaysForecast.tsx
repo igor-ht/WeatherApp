@@ -13,7 +13,7 @@ export default function FiveDaysForecast() {
 
 	useEffect(() => {
 		if (data) dispatch(setFiveDaysForecast(data.DailyForecasts));
-	}, [data]);
+	}, [data, dispatch]);
 
 	return (
 		<div className="five-days-forecast-container">
