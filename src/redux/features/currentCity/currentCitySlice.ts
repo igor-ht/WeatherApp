@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../state/store';
+import { RootState } from '@/redux/state/store';
 
 interface CityI {
 	key: number;

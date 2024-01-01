@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../state/store';
+import { RootState } from '@/redux/state/store';
 
 const initialState: { unit: 'C' | 'F' } = {
 	unit: (window.localStorage.getItem('unit') as 'C' | 'F') || 'C',

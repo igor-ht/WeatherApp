@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../state/store';
+import { RootState } from '@/redux/state/store';
 
 const initialState = { theme: window.localStorage.getItem('theme') || 'light' };
 

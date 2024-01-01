@@ -1,3 +1,3 @@
 # Weather App
 
-## Home Assignment
+## Weather App built with React.js, Redux and RTK.
