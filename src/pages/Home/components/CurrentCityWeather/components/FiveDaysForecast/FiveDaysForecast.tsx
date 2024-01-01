@@ -1,10 +1,10 @@
 import './FiveDaysForecast.scss';
 import ForecastDayCard from './ForecastDayCard/ForecastDayCard';
-import { currentCity, setFiveDaysForecast } from '../../../../../../redux/features/currentCity/currentCitySlice';
-import { useGetFiveDaysForecastQuery } from '../../../../../../redux/service/accuweatherApi';
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../../../redux/hooks';
 import { skipToken } from '@reduxjs/toolkit/query';
+import { currentCity, setFiveDaysForecast } from '@/redux/features/currentCity/currentCitySlice';
+import { useGetFiveDaysForecastQuery } from '@/redux/service/accuweatherApi';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 
 export default function FiveDaysForecast() {
 	const city = useAppSelector(currentCity);

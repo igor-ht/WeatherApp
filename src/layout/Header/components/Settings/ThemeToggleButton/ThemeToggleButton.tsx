@@ -1,6 +1,6 @@
 import './ThemeToggleButton.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTheme, theme } from '../../../../../redux/features/theme/themeSlice';
+import { setTheme, theme } from '@/redux/features/theme/themeSlice';
 
 export default function ThemeToggleButton() {
 	const currentTheme = useSelector(theme);

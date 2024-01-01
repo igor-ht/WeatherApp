@@ -1,6 +1,6 @@
 import './Favorites.scss';
 import { useSelector } from 'react-redux';
-import { allFavorites } from '../../redux/features/favorites/favoritesSlice';
+import { allFavorites } from '@/redux/features/favorites/favoritesSlice';
 import FavoriteCard from './FavoriteCard/FavoriteCard';
 
 export default function Favorites() {

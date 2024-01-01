@@ -1,8 +1,8 @@
 import './ForecastDayCard.scss';
 import { useSelector } from 'react-redux';
-import { DailyForecastI } from '../../../../../../../redux/features/currentCity/currentCitySlice';
-import { temperatureUnit } from '../../../../../../../redux/features/temperatureUnit/temperatureUnit';
-import { theme } from '../../../../../../../redux/features/theme/themeSlice';
+import { DailyForecastI } from '@/redux/features/currentCity/currentCitySlice';
+import { temperatureUnit } from '@/redux/features/temperatureUnit/temperatureUnit';
+import { theme } from '@/redux/features/theme/themeSlice';
 
 export default function ForecastDayCard(forecast: DailyForecastI) {
 	const unit = useSelector(temperatureUnit);

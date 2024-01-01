@@ -1,9 +1,9 @@
 import './Settings.scss';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { theme } from '@/redux/features/theme/themeSlice';
 import ThemeToggleButton from './ThemeToggleButton/ThemeToggleButton';
 import TemperatureUnitToggleButton from './TemperatureUnitToggleButton/TemperatureUnitToggleButton';
-import { useSelector } from 'react-redux';
-import { theme } from '../../../../redux/features/theme/themeSlice';
 
 export default function Settings() {
 	const currentTheme = useSelector(theme);

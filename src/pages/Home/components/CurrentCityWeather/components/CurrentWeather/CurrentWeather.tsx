@@ -1,11 +1,11 @@
 import './CurrentWeather.scss';
-import { currentCity, setCurrentWeather } from '../../../../../../redux/features/currentCity/currentCitySlice';
-import { addFavorite, removeFavorite, allFavorites } from '../../../../../../redux/features/favorites/favoritesSlice';
-import { temperatureUnit } from '../../../../../../redux/features/temperatureUnit/temperatureUnit';
-import { useGetCurrentWeatherQuery } from '../../../../../../redux/service/accuweatherApi';
+import { currentCity, setCurrentWeather } from '@/redux/features/currentCity/currentCitySlice';
+import { addFavorite, removeFavorite, allFavorites } from '@/redux/features/favorites/favoritesSlice';
+import { temperatureUnit } from '@/redux/features/temperatureUnit/temperatureUnit';
+import { useGetCurrentWeatherQuery } from '@/redux/service/accuweatherApi';
 import { useState, useEffect } from 'react';
-import { theme } from '../../../../../../redux/features/theme/themeSlice';
-import { useAppDispatch, useAppSelector } from '../../../../../../redux/hooks';
+import { theme } from '@/redux/features/theme/themeSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { skipToken } from '@reduxjs/toolkit/query';
 
 export default function CurrentWeather() {

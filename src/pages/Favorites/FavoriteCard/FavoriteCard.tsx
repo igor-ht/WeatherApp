@@ -1,10 +1,10 @@
 import './FavoriteCard.scss';
-import { CurrentCityType, setCurrentCity } from '../../../redux/features/currentCity/currentCitySlice';
 import { useNavigate } from 'react-router-dom';
-import { removeFavorite } from '../../../redux/features/favorites/favoritesSlice';
-import { temperatureUnit } from '../../../redux/features/temperatureUnit/temperatureUnit';
-import { theme } from '../../../redux/features/theme/themeSlice';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { CurrentCityType, setCurrentCity } from '@/redux/features/currentCity/currentCitySlice';
+import { removeFavorite } from '@/redux/features/favorites/favoritesSlice';
+import { temperatureUnit } from '@/redux/features/temperatureUnit/temperatureUnit';
+import { theme } from '@/redux/features/theme/themeSlice';
 
 export default function FavoriteCard(props: CurrentCityType) {
 	const currentTheme = useAppSelector(theme);
@@ -18,7 +18,6 @@ export default function FavoriteCard(props: CurrentCityType) {
 
 	const handleUpdateCurrentCity = () => {
 		if (props.city) dispatch(setCurrentCity(props.city));
-		// dispatch(setCurrentWeather(props.currentWeather));
 		navigate('/');
 	};
 

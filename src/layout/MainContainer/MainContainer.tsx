@@ -1,10 +1,10 @@
 import './MainContainer.scss';
-import { skipToken } from '@reduxjs/toolkit/query';
 import { Outlet } from 'react-router-dom';
-import { useGetCityByCoordinatesQuery } from '../../redux/service/accuweatherApi';
 import { useEffect } from 'react';
-import { useAppDispatch } from '../../redux/hooks';
-import { setCurrentCity } from '../../redux/features/currentCity/currentCitySlice';
+import { skipToken } from '@reduxjs/toolkit/query';
+import { useGetCityByCoordinatesQuery } from '@/redux/service/accuweatherApi';
+import { useAppDispatch } from '@/redux/hooks';
+import { setCurrentCity } from '@/redux/features/currentCity/currentCitySlice';
 
 export default function MainContainer({ geolocation }: { geolocation: { lat: string; lon: string } | null }) {
 	const dispatch = useAppDispatch();
