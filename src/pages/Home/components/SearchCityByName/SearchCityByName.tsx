@@ -1,26 +1,23 @@
 import './SearchCityByName.scss';
 import Autocomplete from './Autocomplete/Autocomplete';
-import { KeyboardEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function SearchCityByName() {
 	const [city, setCity] = useState('');
 
-	const handleOnChangeAutocomplete = async (event: KeyboardEvent) => {
-		const input = event.key;
-
-		if (input === 'Backspace') return setCity((prev) => prev.slice(0, -1));
-		if (!/^[a-zA-Z\s\b]$/.test(input)) return;
-		setCity((prev) => (prev += input));
+	const handleOnChangeAutocomplete = async (event: ChangeEvent<HTMLInputElement>) => {
+		const input = event.currentTarget.value;
+		if (!/^[a-zA-Z\s\b]$/.test(input.slice(-1))) return;
+		setCity(input);
 	};
 
 	return (
 		<div className="search-container">
 			<input
 				type="text"
-				onKeyUp={handleOnChangeAutocomplete}
+				onChange={handleOnChangeAutocomplete}
 				placeholder="Search any city by name"
 				value={city}
-				readOnly
 			/>
 			{city ? (
 				<Autocomplete
