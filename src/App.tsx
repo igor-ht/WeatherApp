@@ -19,7 +19,7 @@ function App() {
 				},
 				() => dispatch(setCurrentCity({ key: 215854, name: 'Tel Aviv' }))
 			);
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div

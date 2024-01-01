@@ -15,7 +15,7 @@ export default function Autocomplete({ city, setCity }: { city: string; setCity:
 
 	return (
 		<dialog
-			open={isSuccess}
+			open={isSuccess && !!data}
 			className="autocomplete-container">
 			{data?.map((city: { Key: string; LocalizedName: string }, i: number) => {
 				return (

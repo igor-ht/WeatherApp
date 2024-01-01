@@ -14,7 +14,7 @@ export default function CurrentWeather() {
 	const favorites = useAppSelector(allFavorites);
 	const unit = useAppSelector(temperatureUnit);
 	const dispatch = useAppDispatch();
-	const { data } = useGetCurrentWeatherQuery(city.city?.key ?? skipToken);
+	const { data, isLoading, isError } = useGetCurrentWeatherQuery(city.city?.key ?? skipToken);
 	const [isFavorite, setIsFavorite] = useState(false);
 
 	const handleFavoriteStatus = () => {
@@ -33,6 +33,20 @@ export default function CurrentWeather() {
 		}
 		return () => setIsFavorite(false);
 	}, [favorites, city]);
+
+	if (isLoading)
+		return (
+			<div className="current-weather-container">
+				<h1 style={{ fontSize: '2rem', marginLeft: '2.5rem' }}>Loading...</h1>
+			</div>
+		);
+
+	if (isError)
+		return (
+			<div className="current-weather-container">
+				<h1 style={{ fontSize: '2rem', marginLeft: '2.5rem' }}>We got an error, try again later.</h1>
+			</div>
+		);
 
 	return (
 		<div className="current-weather-container">

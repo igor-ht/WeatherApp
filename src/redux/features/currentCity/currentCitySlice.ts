@@ -8,6 +8,7 @@ interface CityI {
 
 interface CurrentWeatherI {
 	WeatherText: string;
+	EpochTime: number;
 	Temperature: {
 		Metric: {
 			Value: number;
@@ -40,6 +41,7 @@ const initialState: CurrentCityType = {
 	city: null,
 	currentWeather: {
 		WeatherText: '',
+		EpochTime: 0,
 		Temperature: {
 			Metric: { Value: 0, Unit: 'C' },
 		},
