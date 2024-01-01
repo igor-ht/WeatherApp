@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ThemeToggleButton from './ThemeToggleButton/ThemeToggleButton';
 import TemperatureUnitToggleButton from './TemperatureUnitToggleButton/TemperatureUnitToggleButton';
 import { useSelector } from 'react-redux';
-import { theme } from '../../../../features/theme/themeSlice';
+import { theme } from '../../../../redux/features/theme/themeSlice';
 
 export default function Settings() {
 	const currentTheme = useSelector(theme);

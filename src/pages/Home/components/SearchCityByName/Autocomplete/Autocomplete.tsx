@@ -1,13 +1,13 @@
 import './Autocomplete.scss';
-import { useDispatch } from 'react-redux';
-import { setCurrentCity } from '../../../../../features/currentCity/currentCitySlice';
-import { useGetCitySearchAutocompleteQuery } from '../../../../../features/api/accuweatherApi';
+import { setCurrentCity } from '../../../../../redux/features/currentCity/currentCitySlice';
+import { useGetCitySearchAutocompleteQuery } from '../../../../../redux/service/accuweatherApi';
 import { Dispatch } from 'react';
+import { useAppDispatch } from '../../../../../redux/hooks';
 
 export default function Autocomplete({ city, setCity }: { city: string; setCity: Dispatch<React.SetStateAction<string>> }) {
 	const { data, isSuccess } = useGetCitySearchAutocompleteQuery(city);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const handleNewCurrentCity = (key: string, name: string) => {
 		dispatch(setCurrentCity({ key: Number(key), name: name }));

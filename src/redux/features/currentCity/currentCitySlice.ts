@@ -31,16 +31,13 @@ export interface DailyForecastI {
 }
 
 export type CurrentCityType = {
-	city: CityI;
+	city: CityI | null;
 	currentWeather: CurrentWeatherI;
 	fiveDaysForecast: DailyForecastI[];
 };
 
 const initialState: CurrentCityType = {
-	city: {
-		key: 215854,
-		name: 'Tel Aviv',
-	},
+	city: null,
 	currentWeather: {
 		WeatherText: '',
 		Temperature: {

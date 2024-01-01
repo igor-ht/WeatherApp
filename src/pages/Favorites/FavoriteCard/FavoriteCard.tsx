@@ -1,35 +1,24 @@
 import './FavoriteCard.scss';
-import { CurrentCityType, setCurrentCity, setCurrentWeather } from '../../../features/currentCity/currentCitySlice';
+import { CurrentCityType, setCurrentCity } from '../../../redux/features/currentCity/currentCitySlice';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, allFavorites, removeFavorite } from '../../../features/favorites/favoritesSlice';
-import { temperatureUnit } from '../../../features/temperatureUnit/temperatureUnit';
-import { useState, useEffect } from 'react';
-import { theme } from '../../../features/theme/themeSlice';
+import { removeFavorite } from '../../../redux/features/favorites/favoritesSlice';
+import { temperatureUnit } from '../../../redux/features/temperatureUnit/temperatureUnit';
+import { theme } from '../../../redux/features/theme/themeSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 
 export default function FavoriteCard(props: CurrentCityType) {
-	const favorites = useSelector(allFavorites);
-	const unit = useSelector(temperatureUnit);
-	const currentTheme = useSelector(theme);
-	const dispatch = useDispatch();
-	const [isFavorite, setIsFavorite] = useState(false);
+	const currentTheme = useAppSelector(theme);
+	const unit = useAppSelector(temperatureUnit);
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
 	const handleFavoriteStatus = () => {
-		if (!isFavorite) dispatch(addFavorite(props));
-		else dispatch(removeFavorite(props));
-		setIsFavorite((prev) => !prev);
+		dispatch(removeFavorite(props));
 	};
 
-	useEffect(() => {
-		for (const favorite of favorites.favorites) {
-			if (favorite.city.key === props.city.key) setIsFavorite(true);
-		}
-	}, [favorites, props]);
-
 	const handleUpdateCurrentCity = () => {
-		dispatch(setCurrentCity(props.city));
-		dispatch(setCurrentWeather(props.currentWeather));
+		if (props.city) dispatch(setCurrentCity(props.city));
+		// dispatch(setCurrentWeather(props.currentWeather));
 		navigate('/');
 	};
 
@@ -41,7 +30,7 @@ export default function FavoriteCard(props: CurrentCityType) {
 				type="button"
 				onClick={handleFavoriteStatus}>
 				<img
-					src={isFavorite ? './heart-filled.svg' : './heart-empty.svg'}
+					src={'./heart-filled.svg'}
 					alt="favorite"
 					title="favorite"
 				/>
@@ -49,7 +38,7 @@ export default function FavoriteCard(props: CurrentCityType) {
 			<div
 				className="favorite-info"
 				onClick={handleUpdateCurrentCity}>
-				<h1>{props.city.name}</h1>
+				<h1>{props.city?.name}</h1>
 				<section>
 					<h1>
 						{unit.unit === 'F'

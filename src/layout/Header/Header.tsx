@@ -2,7 +2,7 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import { useSelector } from 'react-redux';
-import { theme } from '../../features/theme/themeSlice';
+import { theme } from '../../redux/features/theme/themeSlice';
 
 export default function Header() {
 	const currentTheme = useSelector(theme);

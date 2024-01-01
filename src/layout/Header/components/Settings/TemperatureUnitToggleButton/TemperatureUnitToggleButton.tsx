@@ -1,6 +1,6 @@
 import './TemperatureUnitToggleButton.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { temperatureUnit, setTemperatureUnit } from '../../../../../features/temperatureUnit/temperatureUnit';
+import { temperatureUnit, setTemperatureUnit } from '../../../../../redux/features/temperatureUnit/temperatureUnit';
 
 export default function TemperatureUnitToggleButton() {
 	const unit = useSelector(temperatureUnit);

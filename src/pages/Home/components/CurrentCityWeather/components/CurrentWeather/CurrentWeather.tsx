@@ -1,20 +1,21 @@
 import './CurrentWeather.scss';
-import { currentCity, setCurrentWeather } from '../../../../../../features/currentCity/currentCitySlice';
-import { addFavorite, removeFavorite, allFavorites } from '../../../../../../features/favorites/favoritesSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { temperatureUnit } from '../../../../../../features/temperatureUnit/temperatureUnit';
-import { useGetCurrentWeatherQuery } from '../../../../../../features/api/accuweatherApi';
+import { currentCity, setCurrentWeather } from '../../../../../../redux/features/currentCity/currentCitySlice';
+import { addFavorite, removeFavorite, allFavorites } from '../../../../../../redux/features/favorites/favoritesSlice';
+import { temperatureUnit } from '../../../../../../redux/features/temperatureUnit/temperatureUnit';
+import { useGetCurrentWeatherQuery } from '../../../../../../redux/service/accuweatherApi';
 import { useState, useEffect } from 'react';
-import { theme } from '../../../../../../features/theme/themeSlice';
+import { theme } from '../../../../../../redux/features/theme/themeSlice';
+import { useAppDispatch, useAppSelector } from '../../../../../../redux/hooks';
+import { skipToken } from '@reduxjs/toolkit/query';
 
 export default function CurrentWeather() {
-	const city = useSelector(currentCity);
-	const favorites = useSelector(allFavorites);
-	const currentTheme = useSelector(theme);
-	const dispatch = useDispatch();
-	const unit = useSelector(temperatureUnit);
+	const currentTheme = useAppSelector(theme);
+	const city = useAppSelector(currentCity);
+	const favorites = useAppSelector(allFavorites);
+	const unit = useAppSelector(temperatureUnit);
+	const dispatch = useAppDispatch();
+	const { data } = useGetCurrentWeatherQuery(city.city?.key ?? skipToken);
 	const [isFavorite, setIsFavorite] = useState(false);
-	const { data } = useGetCurrentWeatherQuery(city.city.key);
 
 	const handleFavoriteStatus = () => {
 		if (!isFavorite) dispatch(addFavorite(city));
@@ -28,9 +29,9 @@ export default function CurrentWeather() {
 
 	useEffect(() => {
 		for (const favorite of favorites.favorites) {
-			if (favorite.city.key === city.city.key) setIsFavorite(true);
-			console.log(favorite.city, city.city);
+			if (favorite.city?.key === city.city?.key) setIsFavorite(true);
 		}
+		return () => setIsFavorite(false);
 	}, [favorites, city]);
 
 	return (
@@ -59,8 +60,6 @@ export default function CurrentWeather() {
 			<div className="weatherText">
 				<h1>{city.currentWeather?.WeatherText}</h1>
 			</div>
-			<div className="top-section"></div>
-			<div className="bottom-section"></div>
 		</div>
 	);
 }

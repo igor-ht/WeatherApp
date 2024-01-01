@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './state/store.ts';
+import { store } from './redux/state/store.ts';
 import { RouterProvider } from 'react-router-dom';
 import { appRouter } from './router.tsx';
 
