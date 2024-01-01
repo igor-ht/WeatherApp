@@ -12,7 +12,6 @@ export default function MainContainer({ geolocation }: { geolocation: { lat: str
 
 	useEffect(() => {
 		if (data) dispatch(setCurrentCity({ key: data.Key, name: data.LocalizedName }));
-		else dispatch(setCurrentCity({ key: 215854, name: 'Tel Aviv' }));
 	}, [data, dispatch]);
 
 	return (
