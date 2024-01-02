@@ -15,7 +15,7 @@ export default function ForecastDayCard(forecast: DailyForecastI) {
 		<div
 			className="forecast-card"
 			data-theme={currentTheme.theme}>
-			<h1>{weekDay}</h1>
+			<h3>{weekDay}</h3>
 			<div className="temperature">
 				<section>
 					<span>Min&nbsp;</span>

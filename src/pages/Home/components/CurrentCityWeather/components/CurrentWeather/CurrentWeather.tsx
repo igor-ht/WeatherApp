@@ -71,8 +71,8 @@ export default function CurrentWeather() {
 			<div className="temperature">
 				<h2>
 					{unit.unit === 'F'
-						? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed().toString()
-						: city.currentWeather?.Temperature?.Metric?.Value.toFixed().toString()}
+						? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
+						: city.currentWeather?.Temperature?.Metric?.Value.toFixed()}
 					&deg;{unit.unit}
 				</h2>
 			</div>
