@@ -1,7 +1,7 @@
 import './SearchCityByName.scss';
 import Autocomplete from './Autocomplete/Autocomplete';
 import { ChangeEvent, useState } from 'react';
-import { useDebounce } from '@/libs/useDebounce';
+import { useDebounce } from '@/utils/useDebounce';
 
 export default function SearchCityByName() {
 	const [city, setCity] = useState<string | null>(null);

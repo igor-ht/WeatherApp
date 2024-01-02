@@ -1,16 +1,22 @@
 import './Settings.scss';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { theme } from '@/redux/features/theme/themeSlice';
 import ThemeToggleButton from './ThemeToggleButton/ThemeToggleButton';
 import TemperatureUnitToggleButton from './TemperatureUnitToggleButton/TemperatureUnitToggleButton';
+import { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { theme } from '@/redux/features/theme/themeSlice';
+import { useClickOutsideModal } from '@/utils/useClickOutsideModal';
 
 export default function Settings() {
 	const currentTheme = useSelector(theme);
 	const [openSettings, setOpenSettings] = useState(false);
 
+	const modal = useRef<HTMLDivElement | null>(null);
+	useClickOutsideModal(modal, () => setOpenSettings(false));
+
 	return (
-		<div className="settings">
+		<div
+			ref={modal}
+			className="settings">
 			<button
 				type="button"
 				onClick={() => setOpenSettings((prev) => !prev)}>
