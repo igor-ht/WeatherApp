@@ -34,7 +34,7 @@ export default function CurrentWeather() {
 		return () => setIsFavorite(false);
 	}, [favorites, city]);
 
-	if (isLoading)
+	if (isLoading || (!data && !isError))
 		return (
 			<div className="current-weather-container">
 				<section className="loading">
