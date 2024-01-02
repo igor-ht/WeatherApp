@@ -9,13 +9,23 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 export default function FiveDaysForecast() {
 	const city = useAppSelector(currentCity);
 	const dispatch = useAppDispatch();
-	const { data } = useGetFiveDaysForecastQuery(city.city?.key ?? skipToken);
+	const { data, isLoading, isError } = useGetFiveDaysForecastQuery(city.city?.key ?? skipToken);
 
 	useEffect(() => {
 		if (data) dispatch(setFiveDaysForecast(data.DailyForecasts));
 	}, [data, dispatch]);
 
-	if (city.currentWeather.EpochTime === 0) return <div className="five-days-forecast-container" />;
+	if (isLoading) return <div className="five-days-forecast-container" />;
+
+	if (isError && city.currentWeather.EpochTime !== 0)
+		return (
+			<div className="five-days-forecast-container">
+				<section className="error">
+					<h1>We got an error.</h1>
+					<h2>Try again later.</h2>
+				</section>
+			</div>
+		);
 
 	return (
 		<div className="five-days-forecast-container">
