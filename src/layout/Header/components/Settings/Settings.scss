@@ -28,7 +28,7 @@
       cursor: pointer;
       margin: 0 1rem 0 0;
     }
-    @media (min-width: 400px) {
+    @media (min-width: 480px) {
       padding: 0.5rem;
       img {
         width: 2rem;
@@ -52,7 +52,7 @@
       background-color: gray;
       border: 1px solid gray;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 480px) {
       top: 5.45rem;
     }
   }
