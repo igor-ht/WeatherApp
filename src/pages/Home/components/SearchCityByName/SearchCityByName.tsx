@@ -1,9 +1,11 @@
 import './SearchCityByName.scss';
 import Autocomplete from './Autocomplete/Autocomplete';
 import { ChangeEvent, useState } from 'react';
+import { useDebounce } from '@/libs/useDebounce';
 
 export default function SearchCityByName() {
 	const [city, setCity] = useState('');
+	const debouncedCity = useDebounce(city, 500);
 
 	const handleOnChangeAutocomplete = async (event: ChangeEvent<HTMLInputElement>) => {
 		const input = event.currentTarget.value;
@@ -21,7 +23,7 @@ export default function SearchCityByName() {
 			{city ? (
 				<Autocomplete
 					setCity={setCity}
-					city={city}
+					city={debouncedCity}
 				/>
 			) : null}
 		</div>

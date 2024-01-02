@@ -2,8 +2,9 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  padding: 0.2rem;
+  justify-content: space-between;
+  padding: 0 0.1rem;
+  padding-bottom: 0;
   background-color: #ede798;
   font-family:
     system-ui,
@@ -18,9 +19,9 @@ header {
     "Helvetica Neue",
     sans-serif;
   user-select: none;
-  
+
   @media (min-width: 400px) {
-    padding: 0.5rem;
+    padding: 0 0.3rem;
     justify-content: normal;
   }
 
@@ -33,34 +34,6 @@ header {
       img {
         filter: invert(1);
       }
-    }
-  }
-}
-
-.header-icon {
-  margin: 0 0 0 0.2rem;
-  font-size: 1.5rem;
-  @media (min-width: 400px) {
-    margin: 0 0 0 0.5rem;
-    font-size: 3rem;
-  }
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media (min-width: 400px) {
-    flex: 1;
-    justify-content: space-evenly;
-  }
-
-  a {
-    font-size: 1.2rem;
-    color: black;
-    margin: 0.5rem;
-    @media (min-width: 400px) {
-      font-size: 1.5rem;
     }
   }
 }

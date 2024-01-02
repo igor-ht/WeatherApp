@@ -37,14 +37,19 @@ export default function CurrentWeather() {
 	if (isLoading)
 		return (
 			<div className="current-weather-container">
-				<h1 style={{ fontSize: '2rem', marginLeft: '2.5rem' }}>Loading...</h1>
+				<section className="loading">
+					<h1>Loading...</h1>
+				</section>
 			</div>
 		);
 
-	if (isError)
+	if (isError || !data)
 		return (
 			<div className="current-weather-container">
-				<h1 style={{ fontSize: '2rem', marginLeft: '2.5rem' }}>We got an error, try again later.</h1>
+				<section className="error">
+					<h1>We got an error.</h1>
+					<h2>Try again later.</h2>
+				</section>
 			</div>
 		);
 
@@ -66,8 +71,8 @@ export default function CurrentWeather() {
 			<div className="temperature">
 				<h2>
 					{unit.unit === 'F'
-						? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
-						: city.currentWeather?.Temperature?.Metric?.Value.toFixed()}
+						? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed().toString()
+						: city.currentWeather?.Temperature?.Metric?.Value.toFixed().toString()}
 					&deg;{unit.unit}
 				</h2>
 			</div>
