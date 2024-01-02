@@ -32,6 +32,7 @@ export default function Autocomplete({
 						title={`${city.LocalizedName} - ${city.Country.LocalizedName}`}
 						onClick={() => handleNewCurrentCity(city.Key, city.LocalizedName)}>
 						<h1>{city.LocalizedName}</h1>
+						<p>{city.Country.LocalizedName}</p>
 					</div>
 				);
 			})}
