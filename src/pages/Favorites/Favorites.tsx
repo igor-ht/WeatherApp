@@ -1,8 +1,8 @@
 import './Favorites.scss';
 import FavoriteCard from './FavoriteCard/FavoriteCard';
-import { allFavorites, fetchCurrentWeatherForFavorites } from '@/redux/features/favorites/favoritesSlice';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { allFavorites, fetchCurrentWeatherForFavorites } from '@/redux/features/favorites/favoritesSlice';
 
 export default function Favorites() {
 	const dispatch = useAppDispatch();

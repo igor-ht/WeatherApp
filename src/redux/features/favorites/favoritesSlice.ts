@@ -16,6 +16,8 @@ const updateFavoritesLocalStorage = (city: CurrentCityType, action: 'add' | 'rem
 	}
 };
 
+// check if the timeframe between the last currentWeather and the current time is bigger or equal to 3 hours
+// if true we fetch and update the currentWeather, else keep the current data
 export const fetchCurrentWeatherForFavorites = createAsyncThunk(
 	'favorites/fetchCurrentWeatherForFavorites',
 	async (favorites: { favorites: CurrentCityType[] }, { dispatch }) => {
@@ -24,12 +26,10 @@ export const fetchCurrentWeatherForFavorites = createAsyncThunk(
 				favorites.favorites.map(async (favorite) => {
 					if (favorite.city) {
 						try {
-							// check if the timeframe between the last currentWeather and the current time is bigger or equal to 6 hours
-							// if true we fetch and update the currentWeather of the favorite city, else return the current data
-							if (Math.abs(Math.floor(new Date().getTime() / 1000) - favorite?.currentWeather.EpochTime) <= 6 * 60 * 60 * 1000) {
-								const res = await dispatch(accuweatherApi.endpoints.getCurrentWeather.initiate(favorite.city.key));
-								return { ...favorite, currentWeather: res.data[0] };
-							} else return favorite;
+							const epochTimeDif = Math.abs(Math.floor(new Date().getTime() / 1000) - favorite?.currentWeather.EpochTime);
+							if (epochTimeDif < 3 * 60 * 60 * 1000) return favorite;
+							const res = await dispatch(accuweatherApi.endpoints.getCurrentWeather.initiate(favorite.city.key));
+							return { ...favorite, currentWeather: res.data[0] };
 						} catch {
 							console.error(`Error fetching current weather for city ${favorite.city?.key}`);
 							return favorite;
