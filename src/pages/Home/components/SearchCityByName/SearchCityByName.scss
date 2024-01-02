@@ -4,7 +4,6 @@
   justify-content: center;
 
   input {
-    margin: 2rem 0 0;
     height: 2.5rem;
     width: 20rem;
     text-indent: 3px;
@@ -14,7 +13,6 @@
     font-size: 16px;
     @media (min-width: 480px) {
       width: 25rem;
-      margin-top: 3rem;
     }
   }
 }
