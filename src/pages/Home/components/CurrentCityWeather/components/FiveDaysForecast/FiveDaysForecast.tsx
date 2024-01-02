@@ -15,6 +15,8 @@ export default function FiveDaysForecast() {
 		if (data) dispatch(setFiveDaysForecast(data.DailyForecasts));
 	}, [data, dispatch]);
 
+	if (city.currentWeather.EpochTime === 0) return <div className="five-days-forecast-container" />;
+
 	return (
 		<div className="five-days-forecast-container">
 			{city?.fiveDaysForecast?.map((day, i) => {
