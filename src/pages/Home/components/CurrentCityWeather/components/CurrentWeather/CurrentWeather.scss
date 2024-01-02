@@ -12,6 +12,10 @@ h3 {
   grid-template-rows: auto;
   align-items: center;
 
+  @media (max-width: 480px) {
+    align-items: start;
+  }
+
   .loading,
   .error {
     margin: auto;
