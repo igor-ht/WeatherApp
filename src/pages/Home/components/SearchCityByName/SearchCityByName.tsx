@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react';
 import { useDebounce } from '@/libs/useDebounce';
 
 export default function SearchCityByName() {
-	const [city, setCity] = useState('');
+	const [city, setCity] = useState<string | null>(null);
 	const debouncedCity = useDebounce(city, 500);
 
 	const handleOnChangeAutocomplete = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,7 @@ export default function SearchCityByName() {
 				name="city"
 				onChange={handleOnChangeAutocomplete}
 				placeholder="Search any city by name"
-				value={city}
+				value={city || ''}
 			/>
 			{city ? (
 				<Autocomplete
