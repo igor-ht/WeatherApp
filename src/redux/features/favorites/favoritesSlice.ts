@@ -22,16 +22,16 @@ export const fetchCurrentWeatherForFavorites = createAsyncThunk(
 		return {
 			favorites: await Promise.all(
 				favorites.favorites.map(async (favorite) => {
-					const { city } = favorite;
-					if (city) {
+					if (favorite.city) {
 						try {
-							if (Math.abs(Math.floor(new Date().getTime() / 1000) - favorite?.currentWeather.EpochTime) >= 6 * 60 * 60 * 1000) {
-								const res = await dispatch(accuweatherApi.endpoints.getCurrentWeather.initiate(city.key));
-								console.log('updated');
+							// check if the timeframe between the last currentWeather and the current time is bigger or equal to 6 hours
+							// if true we fetch and update the currentWeather of the favorite city, else return the current data
+							if (Math.abs(Math.floor(new Date().getTime() / 1000) - favorite?.currentWeather.EpochTime) <= 6 * 60 * 60 * 1000) {
+								const res = await dispatch(accuweatherApi.endpoints.getCurrentWeather.initiate(favorite.city.key));
 								return { ...favorite, currentWeather: res.data[0] };
 							} else return favorite;
-						} catch (error) {
-							console.error(`Error fetching current weather for city ${city?.key}:`, error);
+						} catch {
+							console.error(`Error fetching current weather for city ${favorite.city?.key}`);
 							return favorite;
 						}
 					}

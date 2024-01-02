@@ -10,13 +10,20 @@ export const accuweatherApi = createApi({
 		mode: 'cors',
 		credentials: 'same-origin',
 	}),
+	keepUnusedDataFor: 60 * 10,
 	endpoints: (builder) => ({
-		getCurrentWeather: builder.query({ query: (cityKey) => `currentconditions/v1/${cityKey}?apikey=${API_KEY}` }),
+		getCurrentWeather: builder.query({
+			query: (cityKey) => `currentconditions/v1/${cityKey}?apikey=${API_KEY}`,
+		}),
 		getFiveDaysForecast: builder.query({ query: (cityKey) => `forecasts/v1/daily/5day/${cityKey}?apikey=${API_KEY}&metric=true` }),
 		getCityByCoordinates: builder.query({
 			query: (coords) => `locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${coords.lat}%2C%20${coords.lon}`,
+			keepUnusedDataFor: 60 * 30,
 		}),
-		getCitySearchAutocomplete: builder.query({ query: (cityName) => `locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${cityName}` }),
+		getCitySearchAutocomplete: builder.query({
+			query: (cityName) => `locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${cityName}`,
+			keepUnusedDataFor: 60 * 3,
+		}),
 	}),
 });
 
