@@ -43,7 +43,7 @@ export default function CurrentWeather() {
 			</div>
 		);
 
-	if (isError && !data)
+	if (isError || !data)
 		return (
 			<div className="current-weather-container">
 				<section className="error">
