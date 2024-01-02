@@ -16,6 +16,7 @@ export default function SearchCityByName() {
 		<div className="search-container">
 			<input
 				type="text"
+				name="city"
 				onChange={handleOnChangeAutocomplete}
 				placeholder="Search any city by name"
 				value={city}
