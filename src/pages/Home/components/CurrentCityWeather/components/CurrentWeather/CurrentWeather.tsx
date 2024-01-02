@@ -43,7 +43,7 @@ export default function CurrentWeather() {
 			</div>
 		);
 
-	if (isError && !data && !isLoading)
+	if (isError && !data)
 		return (
 			<div className="current-weather-container">
 				<section className="error">
@@ -55,29 +55,33 @@ export default function CurrentWeather() {
 
 	return (
 		<div className="current-weather-container">
-			<div className="base-info">
-				<h1>{city.city?.name}</h1>
+			<div className="first-row">
+				<div className="base-info">
+					<h1>{city.city?.name}</h1>
+				</div>
+				<div className="add-to-favorites">
+					<button onClick={handleFavoriteStatus}>
+						<img
+							src={isFavorite ? './heart-filled.svg' : './heart-empty.svg'}
+							alt="favorite"
+							title="favorite"
+							data-theme={isFavorite ? 'light' : currentTheme.theme}
+						/>
+					</button>
+				</div>
 			</div>
-			<div className="add-to-favorites">
-				<button onClick={handleFavoriteStatus}>
-					<img
-						src={isFavorite ? './heart-filled.svg' : './heart-empty.svg'}
-						alt="favorite"
-						title="favorite"
-						data-theme={isFavorite ? 'light' : currentTheme.theme}
-					/>
-				</button>
-			</div>
-			<div className="temperature">
-				<h2>
-					{unit.unit === 'F'
-						? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
-						: city.currentWeather?.Temperature?.Metric?.Value.toFixed()}
-					&deg;{unit.unit}
-				</h2>
-			</div>
-			<div className="weatherText">
-				<h2>{city.currentWeather?.WeatherText}</h2>
+			<div className="second-row">
+				<div className="temperature">
+					<h2>
+						{unit.unit === 'F'
+							? (city.currentWeather?.Temperature?.Metric?.Value * 1.8 + 32).toFixed()
+							: city.currentWeather?.Temperature?.Metric?.Value.toFixed()}
+						&deg;{unit.unit}
+					</h2>
+				</div>
+				<div className="weatherText">
+					<h2>{city.currentWeather?.WeatherText}</h2>
+				</div>
 			</div>
 		</div>
 	);
