@@ -28,9 +28,7 @@ export default function CurrentWeather() {
 	}, [data, dispatch]);
 
 	useEffect(() => {
-		for (const favorite of favorites.favorites) {
-			if (favorite.city?.key === city.city?.key) setIsFavorite(true);
-		}
+		favorites.favorites.map((favorite) => (favorite.city?.key === city.city?.key ? setIsFavorite(true) : null));
 		return () => setIsFavorite(false);
 	}, [favorites, city]);
 

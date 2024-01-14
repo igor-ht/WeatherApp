@@ -1,19 +1,29 @@
 import './MainContainer.scss';
-import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
-import { skipToken } from '@reduxjs/toolkit/query';
-import { useGetCityByCoordinatesQuery } from '@/redux/service/accuweatherApi';
-import { useAppDispatch } from '@/redux/hooks';
 import { setCurrentCity } from '@/redux/features/currentCity/currentCitySlice';
+import { useAppDispatch } from '@/redux/hooks';
+import { accuweatherApi } from '@/redux/service/accuweatherApi';
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
-export default function MainContainer({ geolocation }: { geolocation: { lat: string; lon: string } | null }) {
+export default function MainContainer() {
 	const dispatch = useAppDispatch();
-	const { data } = useGetCityByCoordinatesQuery(geolocation ?? skipToken);
 
 	useEffect(() => {
-		if (data) dispatch(setCurrentCity({ key: data.Key, name: data.LocalizedName }));
-	}, [data, dispatch]);
-
+		if (navigator.geolocation) {
+			const handleGeolocationWeather = async (coords: { lat: string; lon: string }) => {
+				const ans = await dispatch(accuweatherApi.endpoints.getCityByCoordinates.initiate(coords));
+				dispatch(setCurrentCity({ key: ans?.data.Key, name: ans?.data.LocalizedName }));
+			};
+			navigator.geolocation.getCurrentPosition(
+				async (position) => {
+					await handleGeolocationWeather({ lat: String(position.coords.latitude), lon: String(position.coords.longitude) });
+				},
+				() => dispatch(setCurrentCity({ key: 215854, name: 'Tel Aviv' }))
+			);
+		} else dispatch(setCurrentCity({ key: 215854, name: 'Tel Aviv' }));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+	
 	return (
 		<main className="main-container">
 			<Outlet />
