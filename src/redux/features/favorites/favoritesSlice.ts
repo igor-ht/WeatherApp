@@ -26,10 +26,10 @@ export const fetchCurrentWeatherForFavorites = createAsyncThunk(
 				favorites.favorites.map(async (favorite) => {
 					if (favorite.city) {
 						try {
-							const epochTimeDif = Math.abs(Math.floor(new Date().getTime() / 1000) - favorite?.currentWeather.EpochTime);
-							if (epochTimeDif < 3 * 60 * 60 * 1000) return favorite;
-							const res = await dispatch(accuweatherApi.endpoints.getCurrentWeather.initiate(favorite.city.key));
-							return { ...favorite, currentWeather: res.data[0] };
+							const epochTimeDif = Math.abs(Math.floor(new Date().getTime()) - favorite?.currentWeather.EpochTime);
+							if (epochTimeDif >= 3 * 60 * 60 * 1000) return favorite;
+							const weather = await dispatch(accuweatherApi.endpoints.getCurrentWeather.initiate(favorite.city.key));
+							return { ...favorite, currentWeather: weather.data[0] };
 						} catch {
 							console.error(`Error fetching current weather for city ${favorite.city?.key}`);
 							return favorite;
@@ -54,9 +54,9 @@ const favoritesSlice = createSlice({
 	initialState,
 	reducers: {
 		addFavorite: (state, action) => {
-			for (const fav of state.favorites) {
-				if (fav.city?.key === action.payload.city.key) return state;
-			}
+			const cityKeys = state.favorites.map((favorite) => favorite.city?.key);
+			if (cityKeys.includes(action.payload.city.key)) return state;
+
 			updateFavoritesLocalStorage(action.payload, 'add');
 			state.favorites.push(action.payload);
 		},
