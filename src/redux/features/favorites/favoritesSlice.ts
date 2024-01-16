@@ -26,8 +26,8 @@ export const fetchCurrentWeatherForFavorites = createAsyncThunk(
 				favorites.favorites.map(async (favorite) => {
 					if (favorite.city) {
 						try {
-							const epochTimeDif = Math.abs(Math.floor(new Date().getTime()) - favorite?.currentWeather.EpochTime);
-							if (epochTimeDif >= 3 * 60 * 60 * 1000) return favorite;
+							const epochTimeDif = Math.floor(Math.floor(Date.now() / 1000) - favorite?.currentWeather.EpochTime);
+							if (epochTimeDif < 3 * 60 * 60) return favorite;
 							const weather = await dispatch(accuweatherApi.endpoints.getCurrentWeather.initiate(favorite.city.key));
 							return { ...favorite, currentWeather: weather.data[0] };
 						} catch {
