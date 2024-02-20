@@ -4,13 +4,12 @@ import { useGetCitySearchAutocompleteQuery } from '@/redux/service/accuweatherAp
 import { useAppDispatch } from '@/redux/hooks';
 import { skipToken } from '@reduxjs/toolkit/query';
 
-export default function Autocomplete({
-	city,
-	setCity,
-}: {
+interface AutocompleteProps {
 	city: string | null;
 	setCity: React.Dispatch<React.SetStateAction<string | null>>;
-}) {
+}
+
+export default function Autocomplete({ city, setCity }: AutocompleteProps) {
 	const { data, isSuccess } = useGetCitySearchAutocompleteQuery(city ?? skipToken);
 
 	const dispatch = useAppDispatch();

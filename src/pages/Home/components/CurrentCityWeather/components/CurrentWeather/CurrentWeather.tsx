@@ -20,6 +20,7 @@ export default function CurrentWeather() {
 	const handleFavoriteStatus = () => {
 		if (!isFavorite) dispatch(addFavorite(city));
 		else dispatch(removeFavorite(city));
+
 		setIsFavorite((prev) => !prev);
 	};
 
@@ -28,7 +29,9 @@ export default function CurrentWeather() {
 	}, [data, dispatch]);
 
 	useEffect(() => {
-		favorites.favorites.map((favorite) => (favorite.city?.key === city.city?.key ? setIsFavorite(true) : null));
+		const isFavorite = favorites.favorites.find((favorite) => favorite.city?.key === city.city?.key);
+		if (isFavorite) setIsFavorite(true);
+
 		return () => setIsFavorite(false);
 	}, [favorites, city]);
 
