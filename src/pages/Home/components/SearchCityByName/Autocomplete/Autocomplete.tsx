@@ -5,8 +5,8 @@ import { useAppDispatch } from '@/redux/hooks';
 import { skipToken } from '@reduxjs/toolkit/query';
 
 interface AutocompleteProps {
-	city: string | null;
-	setCity: React.Dispatch<React.SetStateAction<string | null>>;
+	city: string;
+	setCity: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function Autocomplete({ city, setCity }: AutocompleteProps) {

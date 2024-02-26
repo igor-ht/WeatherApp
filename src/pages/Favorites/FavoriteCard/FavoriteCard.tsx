@@ -12,10 +12,6 @@ export default function FavoriteCard(props: CurrentCityType) {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const handleFavoriteStatus = () => {
-		dispatch(removeFavorite(props));
-	};
-
 	const handleUpdateCurrentCity = () => {
 		if (props.city) dispatch(setCurrentCity(props.city));
 		navigate('/');
@@ -27,7 +23,7 @@ export default function FavoriteCard(props: CurrentCityType) {
 			data-theme={currentTheme.theme}>
 			<button
 				type="button"
-				onClick={handleFavoriteStatus}>
+				onClick={() => dispatch(removeFavorite(props))}>
 				<img
 					src={'./heart-filled.svg'}
 					alt="favorite"
